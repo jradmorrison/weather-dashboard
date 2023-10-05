@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+    background: radial-gradient(circle at 10% 20%, rgb(99, 55, 255) 0%, rgb(39, 170, 255) 90%);
+}
+
+.input-group-text {
+    width: 100%;
+}
+
+.city-cont {
+    height: 170px;
+}
