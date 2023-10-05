@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    background: linear-gradient(to top, #09203f 0%, #537895 100%);
+}
+
+.input-group-text {
+    width: 100%;
+}
+
+.city-cont {
+    height: 170px;
+}
+
+.main-card {
+    background-image: url(../images/main.avif);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sunny {
+    background-image: url(../images/sunny.avif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.cloudy {
+    background-image: url(../images/cloudy.avif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.rainy {
+    background-image: url(../images/rainy.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
