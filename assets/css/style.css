@@ -2,8 +2,9 @@
     box-sizing: border-box;
 }
 
-header {
-    background: radial-gradient(circle at 10% 20%, rgb(99, 55, 255) 0%, rgb(39, 170, 255) 90%);
+
+body {
+    background: linear-gradient(to top, #09203f 0%, #537895 100%);
 }
 
 .input-group-text {
@@ -12,4 +13,35 @@ header {
 
 .city-cont {
     height: 170px;
+}
+
+.main-card {
+    background-image: url(../images/main.avif);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sunny {
+    background-image: url(../images/sunny.avif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.cloudy {
+    background-image: url(../images/cloudy.avif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.rainy {
+    background-image: url(../images/rainy.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
 }
