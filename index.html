@@ -27,15 +27,16 @@
                 <!-- Search -->
                 <div class="col-4 px-3">
                     <h2 class="text-light">Search for a City:</h2>
-                    <input type="text" class="input-group-text my-3" placeholder="City">
-                    <button type="button" class="btn btn-primary w-100" id="search">Search</button>
+                    <input type="text" class="input-group-text my-3" placeholder="City" id="search-input">
+                    <button type="button" class="btn btn-primary w-100" id="search-button">Search</button>
                     <hr>
                     
                 </div>
                 <!-- Main dashboard -->
                 <div class="col-8 d-flex px-3">
-                    <div class="container-fluid border city-cont text-light main-card">
-                        <h2 class="my-3">City date</h2>
+                    <div class="container-fluid border text-light main-card">
+                        <h2 class="my-3 d-inline-block">City</h2>
+                        <h2 class="my-3 d-inline-block float-end">date</h2>
                         <h5 class="my-2">temp</h5>
                         <h5 class="my-2">wind</h5>
                         <h5 class="my-2">humidity</h5>
