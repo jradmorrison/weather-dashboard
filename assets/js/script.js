@@ -5,12 +5,26 @@ dayjs.extend(window.dayjs_plugin_timezone);
 const apiKey = '540b5dff5680c93032680b97a3e50044'
 const formEl = $('#search-input');
 const searchBtnEl = $('#search-button');
-const cityListEl = $('#city-select')
+const cityListEl = $('#city-select').children('button');
 var cities = []
 var currentCitySearch = {};
-
+// TODO: FIX BUG OF CITY NAME NOT CHANGING WHEN NEW CITY IS CLICKED
 $(function () {
     console.log("ready!");
+
+    function init() {
+        var locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=orlando&limit=5&appid=${apiKey}`
+        $(".main-card").children().eq(0).text('ORLANDO');
+        getLocation(locationURL);
+    }
+
+    function giveInput(event) {
+        event.stopPropagation();
+        var input = $(this).attr('data-city');
+        var locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${apiKey}`
+        getLocation(locationURL);
+    }
+
 // Get input form form
     function getInput() {
         var searchInput = formEl.val().trim().toUpperCase();
@@ -78,8 +92,15 @@ $(function () {
         }
     }
 
+    function nearMe() {navigator.geolocation.getCurrentPosition(showPosition);}
+    function showPosition(position) {
+        let lat = position.coords.latitude
+        let lon = position.coords.longitude
+        let weatherUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`
+        getWeather(weatherUrl);
+    }
 
-
-
+    init();
     searchBtnEl.on('click', getInput)
+    cityListEl.on('click', giveInput)
 });
