@@ -5,10 +5,10 @@ dayjs.extend(window.dayjs_plugin_timezone);
 const apiKey = '540b5dff5680c93032680b97a3e50044'
 const formEl = $('#search-input');
 const searchBtnEl = $('#search-button');
-const cityListEl = $('#city-select')
+const cityListEl = $('#city-select').children('button');
 var cities = []
 var currentCitySearch = {};
-
+// TODO: FIX BUG OF CITY NAME NOT CHANGING WHEN NEW CITY IS CLICKED
 $(function () {
     console.log("ready!");
 
@@ -19,9 +19,10 @@ $(function () {
     }
 
     function giveInput(event) {
-        input = $(this).attr('data-city');
-        input = $(this).data('city');
-        console.log(input)
+        event.stopPropagation();
+        var input = $(this).attr('data-city');
+        var locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${apiKey}`
+        getLocation(locationURL);
     }
 
 // Get input form form
