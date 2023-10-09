@@ -13,7 +13,7 @@ $(function () {
     console.log("ready!");
 
     function init() {
-        var locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=orlando&limit=5&appid=${apiKey}`
+        var locationURL = `https://api.openweathermap.org/geo/1.0/direct?q=orlando&limit=5&appid=${apiKey}`
         $(".main-card").children().eq(0).text('ORLANDO');
         getLocation(locationURL);
     }
@@ -21,7 +21,7 @@ $(function () {
     function giveInput() {
         
         var input = $(this).attr('data-city');
-        var locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${apiKey}`
+        var locationURL = `https://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${apiKey}`
         currentCitySearch = input;
         getLocation(locationURL);
     }
@@ -34,7 +34,7 @@ $(function () {
             cities.push(searchInput);
             generateButton(searchInput);
         }
-        var locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&limit=5&appid=${apiKey}`
+        var locationURL = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&limit=5&appid=${apiKey}`
         getLocation(locationURL);
         formEl.val('')
     }
@@ -75,7 +75,7 @@ $(function () {
         var today = dayjs().format('M/D')
 
         $(".main-card").children().eq(0).text(cityName);
-        $(".main-card").children().eq(1).attr("src", `http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`)
+        $(".main-card").children().eq(1).attr("src", `https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`)
         $(".main-card").children().eq(2).text(today);
         $(".main-card").children().eq(3).text(`It is currently ${temp}℉`);
         $(".main-card").children().eq(4).text(`The wind speed is ${wind}mph`);
@@ -84,7 +84,7 @@ $(function () {
     // Render forcast data
         for (let i = 1; i < 6; i++) {
             $(`#card${[i]}`).children().eq(0).text(dayjs().add([i], 'day').format('M/D'));
-            $(`#card${[i]}`).children().eq(1).attr("src", `http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`)
+            $(`#card${[i]}`).children().eq(1).attr("src", `https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`)
             $(`#card${[i]}`).children().eq(2).text(`${data.daily[i].temp.max}℉`);
             $(`#card${[i]}`).children().eq(3).text(`${data.daily[i].wind_speed}mph`);
             $(`#card${[i]}`).children().eq(4).text(`${data.daily[i].humidity}%`);
