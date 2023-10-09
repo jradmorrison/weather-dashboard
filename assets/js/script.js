@@ -6,9 +6,9 @@ const apiKey = '540b5dff5680c93032680b97a3e50044'
 const formEl = $('#search-input');
 const searchBtnEl = $('#search-button');
 const cityListEl = $('#city-select').children('button');
-var cities = []
-var currentCitySearch = {};
-// TODO: FIX BUG OF CITY NAME NOT CHANGING WHEN NEW CITY IS CLICKED
+var cities = ['ORLANDO', 'NEW YORK', 'BOSTON']
+var currentCitySearch;
+
 $(function () {
     console.log("ready!");
 
@@ -18,20 +18,21 @@ $(function () {
         getLocation(locationURL);
     }
 
-    function giveInput(event) {
-        event.stopPropagation();
+    function giveInput() {
+        
         var input = $(this).attr('data-city');
         var locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${apiKey}`
+        currentCitySearch = input;
         getLocation(locationURL);
     }
 
 // Get input form form
     function getInput() {
         var searchInput = formEl.val().trim().toUpperCase();
-        console.log(searchInput)
+        currentCitySearch = searchInput;
         if (!cities.includes(searchInput)) {
             cities.push(searchInput);
-            // generateButton(searchInput);
+            generateButton(searchInput);
         }
         var locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&limit=5&appid=${apiKey}`
         getLocation(locationURL);
@@ -65,7 +66,9 @@ $(function () {
     }
 // display current and 5 day forcast
     function displayWeather(data) {
-        var cityName = cities[cities.length-1];
+
+    // Render main card data
+        var cityName = currentCitySearch
         var temp = data.current.temp
         var wind = data.current.wind_speed
         var humidity = data.current.humidity
@@ -78,18 +81,23 @@ $(function () {
         $(".main-card").children().eq(4).text(`The wind speed is ${wind}mph`);
         $(".main-card").children().eq(5).text(`The humidity is ${humidity}%`);
 
-        $(`#card0`).children().eq(0).text(dayjs().add(1, 'day').format('M/D'));
-        $(`#card1`).children().eq(0).text(dayjs().add(2, 'day').format('M/D'));
-        $(`#card2`).children().eq(0).text(dayjs().add(3, 'day').format('M/D'));
-        $(`#card3`).children().eq(0).text(dayjs().add(4, 'day').format('M/D'));
-        $(`#card4`).children().eq(0).text(dayjs().add(5, 'day').format('M/D'));
-        
-        for (let i = 0; i < 5; i++) {
+    // Render forcast data
+        for (let i = 1; i < 6; i++) {
+            $(`#card${[i]}`).children().eq(0).text(dayjs().add([i], 'day').format('M/D'));
             $(`#card${[i]}`).children().eq(1).attr("src", `http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`)
             $(`#card${[i]}`).children().eq(2).text(`${data.daily[i].temp.max}℉`);
             $(`#card${[i]}`).children().eq(3).text(`${data.daily[i].wind_speed}mph`);
             $(`#card${[i]}`).children().eq(4).text(`${data.daily[i].humidity}%`);
         }
+    }
+
+    function generateButton(searchInput) {
+        var newBtn = $('<button>');
+        newBtn.attr('type', 'button');
+        newBtn.addClass('btn btn-secondary mx-3');
+        newBtn.attr('data-city', searchInput);
+        newBtn.text(searchInput);
+        $('#city-select').append(newBtn);
     }
 
     function nearMe() {navigator.geolocation.getCurrentPosition(showPosition);}
