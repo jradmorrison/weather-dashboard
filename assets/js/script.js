@@ -98,6 +98,7 @@ $(function () {
         newBtn.attr('data-city', searchInput);
         newBtn.text(searchInput);
         $('#city-select').append(newBtn);
+        cityListEl = $('#city-select').children('button');
     }
 
     function nearMe() {navigator.geolocation.getCurrentPosition(showPosition);}
