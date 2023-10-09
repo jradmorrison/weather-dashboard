@@ -13,7 +13,7 @@ $(function () {
     console.log("ready!");
 
     function init() {
-        var locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=orlando&limit=5&appid=${apiKey}`
+        var locationURL = `https://api.openweathermap.org/geo/1.0/direct?q=orlando&limit=5&appid=${apiKey}`
         $(".main-card").children().eq(0).text('ORLANDO');
         getLocation(locationURL);
     }
