@@ -14,7 +14,8 @@ N/A
 
 ## Usage
 
-To use this application simply search your desired city! The current weather and 5-day forecast will be populated for you. Then a shortcut will be created at the top of the page to quickly change between your past searches.
+To use this application simply search your desired city! The current weather and 5-day forecast will be populated for you. Then a shortcut will be created at the top of the page to quickly change between your past searches.  
+Visit my deployed page here => https://jradmorrison.github.io/weather-dashboard/
 
 ![A screen shot of my deployed app](./assets/images/Screenshot%202023-10-09%20102720.png)
 
